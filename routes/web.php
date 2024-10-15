@@ -6,10 +6,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/home/{name}', function ($name) {
+    return view('home', [ 'name' => $name ]);
+});
+
 // Named Route
-Route::get('/user/profile', function () {
-    return 'Pengguna Profiles';
+Route::post('/user', function () {
+    return 'Pengguna Profile Baru';
 })->name('user.profile');
+
 
 // Route Param
 Route::get('/user/{name}', function ($name) {
