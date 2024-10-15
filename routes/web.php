@@ -8,11 +8,15 @@ Route::get('/', function () {
 
 Route::get('/home', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/home/{name}', function ($name) {
     return view('home', [ 'name' => $name ]);
 });
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
 
 // Named Route
 Route::post('/user', function () {
