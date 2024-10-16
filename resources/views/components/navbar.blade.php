@@ -13,6 +13,22 @@
           <a class="nav-link" href="{{ route('about') }}">About</a>
         </li>
       </ul>
+
+      {{-- Sign out button at the far right --}}
+      <ul class="navbar-nav ms-auto">
+        @auth
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('auth.signout') }}">Sign Out</a>
+          </li>
+        @endauth
+        @guest
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('auth.signin') }}">Sign In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('auth.signup') }}">Sign Up</a>
+          </li>
+        @endguest
     </div>
   </div>
 </nav>
