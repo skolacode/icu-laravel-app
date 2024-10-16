@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -70,3 +71,6 @@ Route::fallback(function () {
 });
 
 require __DIR__.'/feed/web.php';
+
+Route::get('/auth/signup', [AuthController::class, 'signUp'])->name('auth.signup');
+Route::get('/auth/signin', [AuthController::class, 'signIn'])->name('auth.signin');

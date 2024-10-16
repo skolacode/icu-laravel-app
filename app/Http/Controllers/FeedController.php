@@ -12,11 +12,7 @@ class FeedController extends Controller
 
     public function index()
     {
-        // return view('pages.feed.index');
-        
-        // return 'This is feed list';
-        $feeds = Feed::all();
-        // dd($feeds);
+        $feeds = Feed::paginate(5);
         return view('pages.feed.index', compact('feeds'));
     }
 
@@ -29,13 +25,23 @@ class FeedController extends Controller
 
     public function create()
     {
-        return view('feed.create');
+        return view('pages.feed.create');
     }
 
     public function store(Request $request)
     {
-        Feed::create($this->validateRequest($request));
-        return redirect()->route('feeds')->with('success', 'Feed updated successfully!');
+        $validated_request = $request->validate([
+            'title' => 'required | string | max:100 | min:3',
+            'description' => 'required | string | max:300',
+        ]);
+
+        // ORM
+        // add a user id to the $validated_request
+        $validated_request['user_id'] = 1;
+
+        Feed::create($validated_request);
+        
+        return redirect()->route('feeds')->with('success', 'Feed created successfully!');
     }
 
     public function update(Request $request, Feed $feed)
