@@ -68,3 +68,5 @@ Route::name('job')->prefix('job')->group(function () {
 Route::fallback(function () {
     return 'NO page found :(';
 });
+
+require __DIR__.'/feed/web.php';
