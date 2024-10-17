@@ -23,3 +23,5 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrapFive();
     }
 }
+
+// Business Requirment: If the feed does not belongs to the user, user cannot view the feed

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FeedController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'log-request'])->group(function() {
   Route::get('/feeds', [FeedController::class, 'index'])->name('feeds');
 
   Route::get('/feed/create', [FeedController::class, 'create'])->name('feed.create');

@@ -16,18 +16,14 @@ class AuthController extends Controller
         return view('pages.auth.signin');
     }
 
+    // POST
     public function storeUser(Request $request) {
+        
         $validated_request = $request->validate([
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required | min:6',
         ]);
-
-        // $user = new User();
-        // $user->name = $request->name;
-        // $user->email = $request->email;
-        // $user->password = bcrypt($request->password);
-        // $user->save();
 
         $user = User::where('email', $request->email)->first();
         if($user){
@@ -58,8 +54,13 @@ class AuthController extends Controller
         ])->onlyInput('email');
     }
 
-    public function signOut() {
+    // POST
+    public function signOut(Request $request){
         Auth::logout();
+        
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        
         return redirect()->route('auth.signin');
     }
 }

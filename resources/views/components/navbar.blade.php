@@ -12,6 +12,9 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('about') }}">About</a>
         </li>
+        {{-- <li class="nav-item">
+          <a class="nav-link" href="{{ route('auth.signout') }}">Sign Out</a>
+        </li> --}}
       </ul>
 
       {{-- Sign out button at the far right --}}
@@ -29,6 +32,7 @@
             <a class="nav-link" href="{{ route('auth.signup') }}">Sign Up</a>
           </li>
         @endguest
+      </ul>
     </div>
   </div>
 </nav>

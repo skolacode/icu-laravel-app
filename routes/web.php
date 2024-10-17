@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AIController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -72,10 +73,13 @@ Route::fallback(function () {
 
 require __DIR__.'/feed/web.php';
 
-Route::get('/auth/signup', [AuthController::class, 'signUp'])->name('auth.signup');
-Route::get('/auth/signin', [AuthController::class, 'signIn'])->name('auth.signin');
+Route::middleware('guest')->group(function () {
+    Route::get('/auth/signup', [AuthController::class, 'signUp'])->name('auth.signup');
+    Route::get('/auth/signin', [AuthController::class, 'signIn'])->name('auth.signin');
 
-Route::post('/auth/storeUser', [AuthController::class, 'storeUser'])->name('auth.storeUser');
-Route::post('/auth/authenticate', [AuthController::class, 'authenticate'])->name('auth.authenticate');
+    Route::post('/auth/storeUser', [AuthController::class, 'storeUser'])->name('auth.storeUser');
+    Route::post('/auth/authenticate', [AuthController::class, 'authenticate'])->name('auth.authenticate');
+});
 
 Route::get('/auth/signout', [AuthController::class, 'signOut'])->name('auth.signout');
+Route::get('/ai/feed', [AIController::class, 'generateFeedContent'])->name('ai.feed');

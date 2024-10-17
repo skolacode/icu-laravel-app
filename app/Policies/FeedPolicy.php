@@ -16,10 +16,8 @@ class FeedPolicy
         //
     }
 
-    public function update(?User $user, Feed $feed)
+    public function update(User $user, Feed $feed)
     {
-        // Log::debug("message", [ 'id' => $feed->user_id]);
-
-        return $feed->user_id == 1;
+        return $feed->user_id == $user->id; // boolean
     }
 }
