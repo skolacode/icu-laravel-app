@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -44,6 +45,13 @@ class AuthController extends Controller
         ]);
  
         if (Auth::attempt($credentials)) {
+
+            $user = User::where('email', $request->email)->first();
+
+            $token = $user->createToken('auth_token')->plainTextToken;
+
+            Log::debug("token: ", ["token" => $token]);
+
             $request->session()->regenerate();
  
             return redirect()->intended('feeds');

@@ -11,13 +11,18 @@
             
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="Enter your title">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="title" 
+                    name="title" 
+                    placeholder="Enter your title"
+                    required
+                >
             </div>
             
             <button type="submit" class="btn btn-primary">Generate</button>
         </form>
-    
-        <h1>AI Generated Content</h1>
     
         @if(isset($data) && isset($data['candidates']))
             <div>

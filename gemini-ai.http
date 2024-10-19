@@ -1,0 +1,21 @@
+POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=KEY_HERE HTTP/1.1
+content-type: application/json
+
+{
+  "contents":[
+    {
+      "parts":[
+        {
+          "text":"Siapkah pemain bola yang femes di malaysia"
+        }
+      ]
+    }
+  ]
+}
+
+
+###
+
+GET http://localhost/api/user HTTP/1.1
+Authorization: Bearer 1|AZaPh0VBHt6bsuhhVTT1mL9qzJGjv1l67wX8E2zt83e519ae
+Content-Type: application/json

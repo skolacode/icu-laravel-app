@@ -18,7 +18,6 @@ class AIController extends Controller
         Log::debug("queryTitle: ", ['$queryTitle' => $queryTitle]);
 
         // if $queryTitle empty return default view
-
         if(empty($queryTitle)) {
             return view('pages.ai.generate-feed-content-with-ai');
         }
@@ -58,6 +57,7 @@ class AIController extends Controller
                     if (isset($item['content']['parts'])) {
                         foreach ($item['content']['parts'] as &$part) {
                             $part['text'] = $parsedown->text($part['text']); // Convert to HTML
+                            // $part['text'] = $part['text']; // Convert to HTML
                         }
                     }
                 }
@@ -68,10 +68,5 @@ class AIController extends Controller
             $error = $response->body();
             return view('pages.ai.generate-feed-content-with-ai', ['error' => $error]);
         }
-    }
-
-    public function getQueryToGenerateFeedContent()
-    {
-        return view('pages.ai.query-to-generate-feed-content');
     }
 }
