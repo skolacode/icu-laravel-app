@@ -13,6 +13,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('feeds') }}">Feeds</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('feeds.user') }}">My Feeds</a>
+          </li>
         @endauth
         <li class="nav-item">
           <a class="nav-link" href="{{ route('about') }}">About</a>

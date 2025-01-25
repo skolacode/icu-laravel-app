@@ -11,4 +11,8 @@ Route::middleware(['auth', 'log-request'])->group(function() {
   
   Route::get('/feed/show/{feed}', [FeedController::class, 'show'])->name('feed.show');
   Route::put('/feed/update/{feed}', [FeedController::class, 'update'])->name('feed.update');
+
+  Route::get('/feeds/user', function() {
+    return 'All My Feed';
+  })->name('feeds.user'); 
 });
