@@ -67,4 +67,9 @@ class FeedController extends Controller
             'description' => 'required | string | max:300',
         ]);
     }
+
+    public function userFeeds()
+    {
+        return view('pages.feed.user.feeds');
+    }
 }
