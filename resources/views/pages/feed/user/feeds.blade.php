@@ -24,13 +24,21 @@
         @foreach ($feeds as $feed)
             <div class="card mb-3" style="width: 50%;">
                 <div class="card-body">
-                    <p class="card-title">{{ $feed->title }}</p>
+                    <p class="card-title">{{ $feed->id }} | {{ $feed->title }}</p>
                     <p 
                         class="card-text" 
                         style="color: #646363"
                     >
                         {{ $feed->description }}
                     </p>
+
+                    <a 
+                        type="button"
+                        class="btn btn-secondary"
+                        href="{{ route('feed.show', $feed->id) }}"
+                    >
+                        View
+                    </a>
                 </div>
             </div>
         @endforeach
