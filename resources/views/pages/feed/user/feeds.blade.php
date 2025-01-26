@@ -20,7 +20,7 @@
         >
             New Feed
         </a>
-{{-- 
+
         @foreach ($feeds as $feed)
             <div class="card mb-3" style="width: 50%;">
                 <div class="card-body">
@@ -33,11 +33,11 @@
                     </p>
                 </div>
             </div>
-        @endforeach --}}
+        @endforeach
 
-        {{-- <div class="d-flex justify-content-start">
+        <div class="d-flex justify-content-start">
             {{ $feeds->links() }}
-        </div> --}}
+        </div>
     </div>
 @endsection
     
