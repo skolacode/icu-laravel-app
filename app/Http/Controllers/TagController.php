@@ -12,4 +12,19 @@ class TagController extends Controller
         $tags = Tag::paginate(10);
         return view('pages.tag.index', compact('tags'));
     }
+
+    public function create()
+    {
+        return view('pages.tag.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:20',
+        ]);
+
+        Tag::create($request->all());
+        return redirect()->route('tags')->with('success', 'Tag created successfully');
+    }
 }

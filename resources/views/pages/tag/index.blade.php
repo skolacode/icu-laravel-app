@@ -16,7 +16,7 @@
         <a 
             type="button"
             class="btn btn-primary mb-3"
-            href=""
+            href="{{ route('tag.create') }}"
         >
             New Tag
         </a>
@@ -24,7 +24,7 @@
         @foreach ($tags as $tag)
             <div class="card mb-3" style="width: 50%;">
                 <div class="card-body">
-                    <p class="card-title">{{ $tag->title }}</p>
+                    <p class="card-title">{{ $tag->name }}</p>
                 </div>
             </div>
         @endforeach
