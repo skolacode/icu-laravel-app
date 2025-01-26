@@ -13,6 +13,7 @@ Route::get('/about', function () {
 })->name('about');
 
 require __DIR__.'/feed/web.php';
+require __DIR__.'/tag/web.php';
 
 Route::middleware('guest')->group(function () {
     Route::get('/auth/signup', [AuthController::class, 'signUp'])->name('auth.signup');
