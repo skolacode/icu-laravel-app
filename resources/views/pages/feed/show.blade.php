@@ -68,14 +68,14 @@
 
       {{-- active and inactive radio  --}}
       <div class="mb-3">
-        <label for="is_active">Status</label>
+        <label for="is_active">Status {{ $feed->is_active }}</label>
         <div class="form-check">
           <input 
             class="form-check-input" 
             type="radio" 
             name="is_active" 
             value=1
-            @if (old('status', $feed->is_active ? 'active' : 'inactive') === 'active')
+            @if (old('status', $feed->is_active) == true)
               checked
             @endif
           >
@@ -88,7 +88,7 @@
             type="radio" 
             name="is_active"
             value=0
-            @if (old('status', $feed->is_active ? 'active' : 'inactive') === 'inactive')
+            @if (old('status', $feed->is_active) == false)
               checked
             @endif
           >

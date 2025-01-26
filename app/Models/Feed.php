@@ -11,12 +11,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
-#[ScopedBy([isActiveScope::class])]
+// #[ScopedBy([isActiveScope::class])]
 class Feed extends Model
 {
     use HasFactory;
 
     protected $fillable = ['title', 'description', 'user_id', 'is_active'];
+
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
 
     // protected static function booted()
     // {
@@ -38,10 +42,10 @@ class Feed extends Model
         return $query->where('is_active', true);
     }
 
-    public function description(): Attribute
-    {
-        return Attribute::make(
-            set: fn ($value) => Str::title($value)
-        );
-    }
+    // public function description(): Attribute
+    // {
+    //     return Attribute::make(
+    //         set: fn ($value) => Str::title($value)
+    //     );
+    // }
 }

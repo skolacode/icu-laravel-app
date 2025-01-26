@@ -53,6 +53,9 @@ class FeedController extends Controller
 
     public function update(Request $request, Feed $feed)
     {
+
+        // dd($request->all());
+
         $feed->update($this->validateRequest($request));
         $feed->tags()->sync($request->tags);
         return redirect()->route('feeds')->with('success', 'Feed updated successfully!');;
