@@ -14,7 +14,7 @@ class FeedController extends Controller
 
     public function index()
     {
-        $feeds = Feed::active()->paginate(5);
+        $feeds = Feed::paginate(5);
         return view('pages.feed.index', compact('feeds'));
     }
 
