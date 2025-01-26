@@ -71,7 +71,7 @@ class FeedController extends Controller
     public function userFeeds()
     {
         $user = Auth::user();
-        $feeds = $user->feeds()->paginate(5);
+        $feeds = $user->feeds()->with('tags')->paginate(5);
 
         return view('pages.feed.user.feeds', compact('feeds'));
     }
