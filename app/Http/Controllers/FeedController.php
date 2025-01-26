@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Feed;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -26,7 +27,8 @@ class FeedController extends Controller
 
     public function create()
     {
-        return view('pages.feed.create');
+        $tags = Tag::all();
+        return view('pages.feed.create', compact('tags'));
     }
 
     public function store(Request $request)
@@ -34,6 +36,7 @@ class FeedController extends Controller
         $validated_request = $request->validate([
             'title' => 'required | string | max:100 | min:3',
             'description' => 'required | string | max:300',
+            'tags' => 'required | array',
         ]);
 
         // ORM
@@ -41,7 +44,8 @@ class FeedController extends Controller
         $user = Auth::user();
         $validated_request['user_id'] = $user->id;
 
-        Feed::create($validated_request);
+        $feed = Feed::create($validated_request);
+        $feed->tags()->attach($validated_request['tags']);
         
         return redirect()->route('feeds')->with('success', 'Feed created successfully!');
     }

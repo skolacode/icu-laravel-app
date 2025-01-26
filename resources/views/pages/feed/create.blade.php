@@ -44,6 +44,26 @@
         ></textarea>
       </div>
 
+      @forelse ($tags as $tag)
+        <div class="form-check">
+          <input 
+            class="form-check-input" 
+            type="checkbox" 
+            value="{{ $tag->id }}" 
+            name="tags[]"
+            id="tag-{{ $tag->id }}"
+          >
+          <label 
+            class="form-check-label" 
+            for="tag-{{ $tag->id }}"
+          >
+            {{ $tag->name }}
+          </label>
+        </div>
+      @empty
+        <p>No tags available.</p>
+      @endforelse
+
       <button type="submit" class="btn btn-primary">Save</button>
     </form>
 

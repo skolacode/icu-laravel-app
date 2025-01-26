@@ -10,4 +10,9 @@ class Tag extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function feeds()
+    {
+        return $this->belongsToMany(Feed::class)->withTimestamps()->withPivot('isActive');
+    }
 }
