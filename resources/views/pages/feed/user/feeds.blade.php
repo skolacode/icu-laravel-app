@@ -29,12 +29,14 @@
                         mb-3"
                     >
                         @foreach ($feed->tags as $tag)
-                            <li class="list-group
-                                list-group-horizontal
-                                me-2"
-                            >
-                                <span class="badge bg-primary">{{ $tag->name }}</span>
-                            </li>
+                            @if ($tag->pivot->isActive)
+                                <li class="list-group
+                                    list-group-horizontal
+                                    me-2"
+                                >
+                                    <span class="badge bg-primary">{{ $tag->name }}</span>
+                                </li>
+                            @endif
                         @endforeach
                     </ul>
                     <p class="card-title">{{ $feed->id }} | {{ $feed->title }}</p>
