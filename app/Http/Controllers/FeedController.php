@@ -21,8 +21,9 @@ class FeedController extends Controller
     public function show(Feed $feed)
     {
         Gate::authorize('update', $feed);
+        $tags = Tag::all();
         
-        return view('pages.feed.show', compact('feed'));
+        return view('pages.feed.show', compact('feed', 'tags'));
     }
 
     public function create()
@@ -52,15 +53,8 @@ class FeedController extends Controller
 
     public function update(Request $request, Feed $feed)
     {
-        $validated_request = $request->validate([
-            'title' => 'required | string | max:100',
-            'description' => 'required | string | max:300',
-        ]);
-
-        $feed->update($validated_request);
-        return redirect()->route('feeds');
-
         $feed->update($this->validateRequest($request));
+        $feed->tags()->sync($request->tags);
         return redirect()->route('feeds')->with('success', 'Feed updated successfully!');;
     }
 
@@ -69,6 +63,7 @@ class FeedController extends Controller
         return $request->validate([
             'title' => 'required | string | max:100',
             'description' => 'required | string | max:300',
+            'tags' => 'required | array',
         ]);
     }
 

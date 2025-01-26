@@ -24,6 +24,19 @@
         @foreach ($feeds as $feed)
             <div class="card mb-3" style="width: 50%;">
                 <div class="card-body">
+                    <ul class="list-group
+                        list-group-horizontal
+                        mb-3"
+                    >
+                        @foreach ($feed->tags as $tag)
+                            <li class="list-group
+                                list-group-horizontal
+                                me-2"
+                            >
+                                <span class="badge bg-primary">{{ $tag->name }}</span>
+                            </li>
+                        @endforeach
+                    </ul>
                     <p class="card-title">{{ $feed->id }} | {{ $feed->title }}</p>
                     <p 
                         class="card-text" 
@@ -31,7 +44,6 @@
                     >
                         {{ $feed->description }}
                     </p>
-
                     <a 
                         type="button"
                         class="btn btn-secondary"
