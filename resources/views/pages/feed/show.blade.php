@@ -66,6 +66,37 @@
         </div>
       </div>
 
+      {{-- active and inactive radio  --}}
+      <div class="mb-3">
+        <label for="is_active">Status</label>
+        <div class="form-check">
+          <input 
+            class="form-check-input" 
+            type="radio" 
+            name="is_active" 
+            value=1
+            @if (old('status', $feed->is_active ? 'active' : 'inactive') === 'active')
+              checked
+            @endif
+          >
+          <label class="form-check-label" for="is_active">Active</label>
+        </div>
+        <div class="form-check
+        ">
+          <input 
+            class="form-check-input" 
+            type="radio" 
+            name="is_active"
+            value=0
+            @if (old('status', $feed->is_active ? 'active' : 'inactive') === 'inactive')
+              checked
+            @endif
+          >
+          <label class="form-check-label" for="is_active">Inactive</label>
+        </div>
+      </div>
+
+
       <button type="submit" class="btn btn-primary">Update Feed</button>
     </form>
 

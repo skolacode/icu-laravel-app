@@ -14,7 +14,7 @@ class FeedController extends Controller
 
     public function index()
     {
-        $feeds = Feed::paginate(5);
+        $feeds = Feed::active()->paginate(5);
         return view('pages.feed.index', compact('feeds'));
     }
 
@@ -64,6 +64,7 @@ class FeedController extends Controller
             'title' => 'required | string | max:100',
             'description' => 'required | string | max:300',
             'tags' => 'required | array',
+            'is_active' => 'required | boolean',
         ]);
     }
 
