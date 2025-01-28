@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+{{ $title }}
+
+{{-- <!DOCTYPE html>
 <html>
 <head>
     <title>New Blog Post Published</title>
@@ -72,4 +74,4 @@
         </div>
     </div>
 </body>
-</html>
+</html> --}}

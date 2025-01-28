@@ -37,7 +37,7 @@ class FeedPosted extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mails.feed.posted',
+            view: 'mails.feed.posted', // markdown atau html/blade file
             with: ['title' => $this->feed->title],
         );
     }

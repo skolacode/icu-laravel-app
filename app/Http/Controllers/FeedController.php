@@ -50,7 +50,7 @@ class FeedController extends Controller
         $feed = Feed::create($validated_request);
         $feed->tags()->attach($validated_request['tags']);
 
-        Mail::to('sample@mail.com')->send(new FeedPosted($feed));
+        Mail::to('skolacode@gmail.com')->send(new FeedPosted($feed));
         
         return redirect()->route('feeds')->with('success', 'Feed created successfully!');
     }
