@@ -24,4 +24,11 @@ class Tag extends Model
             get: fn () => Str::upper($this->name),
         );
     }
+
+    public function name(): Attribute
+    {
+        return Attribute::make(
+            set: fn ($value) => Str::upper($value),
+        );
+    }
 }
