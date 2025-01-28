@@ -11,11 +11,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
+
 // #[ScopedBy([isActiveScope::class])]
 class Feed extends Model
 {
     use HasFactory;
-
+    
     protected $fillable = ['title', 'description', 'user_id', 'is_active'];
 
     protected $casts = [

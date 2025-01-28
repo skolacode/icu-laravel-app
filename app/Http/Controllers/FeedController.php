@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\FeedPosted;
 use App\Models\Feed;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class FeedController extends Controller
 {
@@ -47,6 +49,8 @@ class FeedController extends Controller
 
         $feed = Feed::create($validated_request);
         $feed->tags()->attach($validated_request['tags']);
+
+        Mail::to('sample@mail.com')->send(new FeedPosted($feed));
         
         return redirect()->route('feeds')->with('success', 'Feed created successfully!');
     }
