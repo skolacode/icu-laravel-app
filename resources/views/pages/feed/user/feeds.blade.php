@@ -44,7 +44,7 @@
                         class="card-text" 
                         style="color: #646363"
                     >
-                        {{ $feed->description }}
+                        {{ $feed->upperCaseDescription }}
                     </p>
                     <a 
                         type="button"

@@ -42,10 +42,17 @@ class Feed extends Model
         return $query->where('is_active', true);
     }
 
-    // public function description(): Attribute
-    // {
-    //     return Attribute::make(
-    //         set: fn ($value) => Str::title($value)
-    //     );
-    // }
+    public function title(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => Str::lower($value)
+        );
+    }
+
+    public function upperCaseDescription(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => Str::upper($this->description)
+        );
+    }
 }
